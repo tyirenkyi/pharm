@@ -44,7 +44,7 @@ export default function Layout({children, hero}) {
           <Header collections={collections} storeName={storeName} />
           <Cart />
         </Suspense>
-        <main role="main" id="mainContent" className="relative bg-gray-50">
+        <main role="main" id="mainContent" className="relative bg-[#FCFCFC]">
           {hero}
           <div className="p-4 mx-auto md:py-5 md:px-[132px]">{children}</div>
         </main>
