@@ -15,8 +15,8 @@ import {Suspense} from 'react';
 
 export default function Index({country = {isoCode: 'US'}}) {
   return (
-    <Layout hero={<GradientBackground />}>
-      <div className="relative mb-12">
+    <Layout>
+      <div className="relative mt-[120px]">
         <Welcome />
         <Suspense fallback={<BoxFallback />}>
           <FeaturedProductsBox country={country} />
@@ -30,7 +30,7 @@ export default function Index({country = {isoCode: 'US'}}) {
 }
 
 function BoxFallback() {
-  return <div className="bg-white p-12 shadow-xl rounded-xl mb-10 h-40"></div>;
+  return <div className="h-40 p-12 mb-10 bg-white shadow-xl rounded-xl"></div>;
 }
 
 function FeaturedProductsBox({country}) {
@@ -48,10 +48,10 @@ function FeaturedProductsBox({country}) {
     : null;
 
   return (
-    <div className="bg-white p-12 shadow-xl rounded-xl mb-10">
+    <div className="p-12 mb-10 bg-white shadow-xl rounded-xl">
       {featuredProductsCollection ? (
         <>
-          <div className="flex justify-between items-center mb-8 text-md font-medium">
+          <div className="flex items-center justify-between mb-8 font-medium text-md">
             <span className="text-black uppercase">
               {featuredProductsCollection.title}
             </span>
@@ -64,14 +64,14 @@ function FeaturedProductsBox({country}) {
               </Link>
             </span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 gap-8 mb-8 md:grid-cols-2 lg:grid-cols-3">
             {featuredProducts.map((product) => (
               <div key={product.id}>
                 <ProductCard product={product} />
               </div>
             ))}
           </div>
-          <div className="md:hidden text-center">
+          <div className="text-center md:hidden">
             <Link
               to={`/collections/${featuredProductsCollection.handle}`}
               className="text-blue-600"
@@ -102,8 +102,8 @@ function FeaturedCollectionBox({country}) {
 
 function GradientBackground() {
   return (
-    <div className="fixed top-0 w-full h-3/5 overflow-hidden">
-      <div className="absolute w-full h-full bg-gradient-to-t from-gray-50 z-10" />
+    <div className="fixed top-0 w-full overflow-hidden h-3/5">
+      <div className="absolute z-10 w-full h-full bg-gradient-to-t from-gray-50" />
 
       <svg
         viewBox="0 0 960 743"

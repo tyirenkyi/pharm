@@ -1,6 +1,5 @@
-import {useShopQuery, flattenConnection, Link} from '@shopify/hydrogen';
+import {useShopQuery, flattenConnection} from '@shopify/hydrogen';
 import gql from 'graphql-tag';
-import {Suspense} from 'react';
 
 function ExternalIcon() {
   return (
@@ -18,26 +17,6 @@ function ExternalIcon() {
   );
 }
 
-function DocsButton({url, label}) {
-  return (
-    <a
-      href={url}
-      target="_blank"
-      className="bg-white shadow py-2 px-5 rounded-full inline-flex items-center hover:opacity-80"
-      rel="noreferrer"
-    >
-      {label}
-      <ExternalIcon />
-    </a>
-  );
-}
-
-function BoxFallback() {
-  return (
-    <div className="bg-white p-12 shadow-xl rounded-xl text-gray-900 h-60"></div>
-  );
-}
-
 function StorefrontInfo() {
   const {data} = useShopQuery({query: QUERY});
   const shopName = data ? data.shop.name : '';
@@ -49,20 +28,20 @@ function StorefrontInfo() {
   const pluralize = (count, noun, suffix = 's') =>
     `${count} ${noun}${count === 1 ? '' : suffix}`;
   return (
-    <div className="bg-white p-12 shadow-xl rounded-xl text-gray-900">
-      <p className="text-md font-medium uppercase mb-4">Connected Storefront</p>
-      <h2 className="text-2xl font-bold mb-4">{shopName}</h2>
+    <div className="p-12 text-gray-900 bg-white shadow-xl rounded-xl">
+      <p className="mb-4 font-medium uppercase text-md">Connected Storefront</p>
+      <h2 className="mb-4 text-2xl font-bold">{shopName}</h2>
       <p className="text-md">
         {pluralize(totalProducts, 'Product')}
         {', '}
         {pluralize(totalCollections, 'Collection')}
       </p>
       {totalProducts === 0 && totalCollections === 0 && (
-        <div className="py-2 px-3 bg-red-100 text-md">
+        <div className="px-3 py-2 bg-red-100 text-md">
           Use the{' '}
           <a
             href="https://shopify.dev/apps/tools/cli/getting-started"
-            className="text-primary font-mono font-bold underline"
+            className="font-mono font-bold underline text-primary"
             target="_blank"
             rel="noreferrer"
           >
@@ -74,7 +53,7 @@ function StorefrontInfo() {
       <hr className="my-4" />
       <a
         href="https://shopify.dev/custom-storefronts/hydrogen/getting-started#update-information-about-your-shopify-storefront"
-        className="text-md inline-flex items-center text-blue-700 font-medium hover:underline"
+        className="inline-flex items-center font-medium text-blue-700 text-md hover:underline"
         target="_blank"
         rel="noreferrer"
       >
@@ -85,81 +64,41 @@ function StorefrontInfo() {
   );
 }
 
-function TemplateLinks() {
-  const {data} = useShopQuery({query: QUERY});
-  const products = data && flattenConnection(data.products);
-  const collections = data && flattenConnection(data.collections);
-
-  const firstProduct = products && products.length ? products[0].handle : '';
-  const firstCollection = collections[0] ? collections[0].handle : '';
-
-  return (
-    <div className="bg-white p-12 md:p-12 shadow-xl rounded-xl text-gray-900">
-      <p className="text-md font-medium uppercase mb-4">
-        Explore the templates
-      </p>
-      <ul>
-        <li className="mb-4">
-          <Link
-            to={`/collections/${firstCollection}`}
-            className="text-md font-medium text-blue-700 hover:underline"
-          >
-            Collection template
-          </Link>
-        </li>
-        <li className="mb-4">
-          <Link
-            to={`/products/${firstProduct}`}
-            className="text-md font-medium text-blue-700 hover:underline"
-          >
-            Product template
-          </Link>
-        </li>
-        <li>
-          <Link
-            to="/error-page"
-            className="text-md font-medium text-blue-700 hover:underline"
-          >
-            404 template
-          </Link>
-        </li>
-      </ul>
-    </div>
-  );
-}
-
 /**
  * A server component that displays the content on the homepage of the Hydrogen app
  */
 export default function Welcome() {
   return (
-    <div className="text-gray-900 pt-16 rounded-[40px] my-16 px-4 xl:px-12 bg-gradient-to-b from-white -mx-4 xl:-mx-12">
-      <div className="text-center mb-16">
-        <h1 className="font-extrabold mb-4 text-5xl md:text-7xl">
-          Hello, Hydrogen
-        </h1>
-        <p className="text-lg mb-8">
-          Welcome to your custom storefront. Let&rsquo;s get building.
+    <div className="grid grid-cols-3 gap-4">
+      <div className="h-[467px] bg-[url('/drugs.png')] bg-right-top bg-cover col-span-2 bg-no-repeat px-[50px] py-[50px]">
+        <h2 className="text-appBlack text-[35px] font-semibold w-[450px]">
+          Multivitamins - the right choice for you
+        </h2>
+        <p className="text-black w-[440px] my-[13px] text-[16px]">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna.
         </p>
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 text-gray-700">
-          <DocsButton
-            url="https://shopify.dev/custom-storefronts/hydrogen"
-            label="Browse Hydrogen documentation"
-          />
-          <DocsButton url="/graphql" label="Open the GraphiQL explorer" />
-          <DocsButton
-            url="https://github.com/Shopify/hydrogen-examples"
-            label="Explore Hydrogen examples"
-          />
-        </div>
+        <button className="bg-white w-[215px] h-[55px] text-black">
+          Shop for multivitamins
+        </button>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-        <Suspense fallback={<BoxFallback />}>
-          <StorefrontInfo />
-        </Suspense>
-        <Suspense fallback={<BoxFallback />}>
-          <TemplateLinks />
-        </Suspense>
+      <div className="flex flex-col justify-between">
+        <div className="h-[223px] bg-[url('/symptom.png')] bg-center bg-cover px-[21px] py-[50px]">
+          <p className="text-white text-[20px] font-semibold mb-[22px]">
+            Seeing some symptoms?
+          </p>
+          <button className="bg-black w-[186px] h-[39px] text-white">
+            Shop by symptom
+          </button>
+        </div>
+        <div className="h-[223px] bg-[url('/genders.png')] bg-center bg-cover px-[21px] py-[50px]">
+          <p className="text-white text-[20px] font-semibold mb-[22px]">
+            Be sexually responsible at all times
+          </p>
+          <button className="bg-black w-[186px] h-[39px] text-white">
+            Shop for sexual health
+          </button>
+        </div>
       </div>
     </div>
   );
