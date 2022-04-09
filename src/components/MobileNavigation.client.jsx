@@ -16,18 +16,18 @@ export default function MobileNavigation({collections, isOpen, setIsOpen}) {
       <OpenFocusTrap>
         <button
           type="button"
-          className="flex justify-center items-center w-7 h-full"
+          className="flex items-center justify-center h-full w-7"
           onClick={() => setIsOpen((previousIsOpen) => !previousIsOpen)}
         >
           {isOpen ? <CloseIcon /> : <OpenIcon />}
         </button>
         {isOpen ? (
-          <div className="absolute -left-0 top-20 w-full h-screen z-10 bg-gray-50 px-4 md:px-12 py-7">
+          <div className="absolute z-10 w-full h-screen px-4 -left-0 top-20 bg-gray-50 md:px-12 py-7">
             <ul>
               {collections.map((collection) => (
                 <li className="border-b border-gray-200" key={collection.id}>
                   <Link
-                    className="group py-5 text-gray-700 flex items-center justify-between"
+                    className="flex items-center justify-between py-5 text-gray-700 group"
                     to={`/collections/${collection.handle}`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -56,7 +56,7 @@ function CloseIcon() {
     >
       <path
         d="M1 17L17 1M1 1L17 17"
-        stroke="black"
+        stroke="white"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

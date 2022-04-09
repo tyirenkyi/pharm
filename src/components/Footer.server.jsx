@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer
       role="contentinfo"
-      className="bg-transparent h-[60px] flex flex-col justify-center"
+      className="bg-[#FCFCFC] h-[60px] flex flex-col justify-center"
     >
       <ul className="flex flex-row items-center justify-center w-full space-x-10 bg-transparent">
         <li className="text-sm font-medium text-[#C4C8CC] hover:text-gray-900">
