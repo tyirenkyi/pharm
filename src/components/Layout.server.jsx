@@ -46,7 +46,9 @@ export default function Layout({children, hero}) {
         </Suspense>
         <main role="main" id="mainContent" className="relative bg-[#FCFCFC]">
           {hero}
-          <div className="p-4 mx-auto md:py-5 md:px-[132px]">{children}</div>
+          <div className="py-4 mx-auto md:py-5 2xl:px-[132px] xl:px-[50px]">
+            {children}
+          </div>
         </main>
         <Footer collection={collections[0]} product={products[0]} />
       </div>

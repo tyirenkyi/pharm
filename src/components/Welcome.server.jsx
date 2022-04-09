@@ -70,7 +70,7 @@ function StorefrontInfo() {
 export default function Welcome() {
   return (
     <div className="grid grid-cols-3 gap-4">
-      <div className="h-[467px] bg-[url('/drugs.png')] bg-right-top bg-cover col-span-2 bg-no-repeat px-[50px] py-[50px]">
+      <div className="xl:h-[467px] h-[400px] bg-[url('/drugs.png')] bg-right-top bg-cover col-span-2 bg-no-repeat px-[50px] py-[50px]">
         <h2 className="text-appBlack text-[35px] font-semibold w-[450px]">
           Multivitamins - the right choice for you
         </h2>
@@ -83,7 +83,7 @@ export default function Welcome() {
         </button>
       </div>
       <div className="flex flex-col justify-between">
-        <div className="h-[223px] bg-[url('/symptom.png')] bg-center bg-cover px-[21px] py-[50px]">
+        <div className="xl:h-[223px] h-[190px] bg-[url('/symptom.png')] bg-center bg-cover px-[21px] py-[50px]">
           <p className="text-white text-[20px] font-semibold mb-[22px]">
             Seeing some symptoms?
           </p>
@@ -91,7 +91,7 @@ export default function Welcome() {
             Shop by symptom
           </button>
         </div>
-        <div className="h-[223px] bg-[url('/genders.png')] bg-center bg-cover px-[21px] py-[50px]">
+        <div className="xl:h-[223px] h-[190px] bg-[url('/genders.png')] bg-center bg-cover px-[21px] py-[50px]">
           <p className="text-white text-[20px] font-semibold mb-[22px]">
             Be sexually responsible at all times
           </p>

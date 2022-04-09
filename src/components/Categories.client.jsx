@@ -16,7 +16,7 @@ const categories = [
  */
 export default function Categories() {
   return (
-    <div className="border-[#E3E3E3] border bg-white rounded flex flex-col w-[237px] pb-[25px] pl-[24px] pt-[22px] h-[fit-content]">
+    <div className="hidden border-[#E3E3E3] border bg-white rounded lg:flex flex-col w-[237px] pb-[25px] pl-[24px] pt-[22px] h-[fit-content]">
       <p className="text-[18px] font-bold text-black">Categories</p>
       {categories.map((item) => (
         <p

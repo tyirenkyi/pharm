@@ -16,16 +16,16 @@ export default function Header({collections}) {
   return (
     <header role="banner">
       <div
-        className={`fixed z-20 w-full border-b border-gray-200 px-6 md:px-0 md:py-0 lg:pb-0 mx-auto bg-white ${
+        className={`fixed z-20 w-full border-b border-gray-200 mx-auto bg-white ${
           isMobileNavOpen ? '' : 'bg-opacity-95'
         }`}
       >
-        <div className="flex flex-row items-center justify-between h-[41px] px-[132px]">
-          <div className="flex flex-row items-center space-x-8">
+        <div className="flex flex-row items-center justify-between h-[41px] 2xl:px-[132px] xl:px-[50px] px-4">
+          <div className="flex-row items-center hidden space-x-8 md:flex">
             <p className="text-appBlack text-[14px]">Terms and Conditions</p>
             <p className="text-appBlack text-[14px]">Privacy Policy</p>
           </div>
-          <div className="flex flex-row items-center space-x-8">
+          <div className="flex flex-row items-center justify-between w-full space-x-8 md:justify-center md:w-[fit-content]">
             <span className="flex flex-row items-center space-x-2">
               <ImLocation />
               <p className="text-appBlack text-[14px]">
@@ -38,11 +38,11 @@ export default function Header({collections}) {
             </span>
           </div>
         </div>
-        <div className="flex flex-row items-center justify-between bg-appBlack h-[66px] px-[132px]">
+        <div className="flex flex-row items-center justify-between bg-appBlack h-[66px] 2xl:px-[132px] xl:px-[50px] px-4">
           <Link to="/">
             <Image src={'/pharma.png'} width={103} height={30} />
           </Link>
-          <form className="flex flex-row items-center bg-white rounded w-[512px] h-[40px] pl-4 pr-2">
+          <form className="flex flex-row items-center bg-white rounded md:w-[512px] w-[300px] h-[40px] pl-4 pr-2">
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -55,10 +55,10 @@ export default function Header({collections}) {
           </form>
           <div className="flex flex-row items-center space-x-8">
             <CartToggle />
-            <button className="bg-transparent text-white text-[16px] tracking-wider">
+            <button className="bg-transparent text-white text-[16px] tracking-wider hidden lg:block">
               Sign In
             </button>
-            <button className="bg-[#15A383] text-white text-[16px] px-4 py-2 tracking-wider rounded">
+            <button className="bg-[#15A383] text-white text-[16px] px-4 py-2 tracking-wider rounded hidden lg:block">
               Register
             </button>
           </div>
